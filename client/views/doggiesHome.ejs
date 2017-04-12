@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Doggies</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1>My doggies are here</h1> <button type="button" class="btn btn-primary" id="new"><a href="/doggies/new">Make a Doggy</a></button>
+      </div>
+    <div class="row col-sm-6 doggies">
+      <% for(var each in doggies) { %>
+        <div class='row'>
+          <h3><%= doggies[each].name %> -<%= doggies[each].type %></h3>
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-warning edit"><a href="/doggies/edit/<%= doggies[each].id%>">Edit a Doggy</a></button>
+          </div>
+          <div class="col-sm-3 pull-right">
+            <form method="POST" action="/doggies/destroy/<%= doggies[each].id%>"><input type="hidden" value="hidden"><button type="submit" class="btn btn-danger destroy">Destroy a Doggy</button></form>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  </body>
+</html>
